@@ -1,0 +1,97 @@
+/* Blue Archive-inspired palette: sky blue, white panels, navy text, halo yellow accents. */
+:root {
+  --ba-blue: #128cff;
+  --ba-blue-deep: #0a5fd1;
+  --ba-sky: #e6f4ff;
+  --ba-cyan: #38d1ff;
+  --ba-yellow: #ffe23f;
+  --ba-navy: #24324f;
+  --ba-muted: #6b7a99;
+  --ba-line: #d5e3f5;
+  --ba-panel: rgba(255, 255, 255, 0.92);
+  --ba-danger: #ff5a7a;
+  --ba-ok: #2fc58c;
+  --radius: 10px;
+  --shadow: 0 6px 20px rgba(18, 80, 160, 0.12);
+  font-family: 'Noto Sans JP', 'M PLUS Rounded 1c', system-ui, sans-serif;
+  color: var(--ba-navy);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, #ffffff 0, transparent 40%),
+    linear-gradient(160deg, #dff1ff 0%, #f6fbff 45%, #e3eeff 100%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3 { font-family: 'M PLUS Rounded 1c', 'Noto Sans JP', sans-serif; margin: 0; }
+
+button { font: inherit; cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: 0.55; }
+
+/* Slanted BA-style button */
+.ba-btn {
+  position: relative;
+  border: none;
+  padding: 0.65rem 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: var(--ba-navy);
+  background: var(--ba-yellow);
+  transform: skewX(-12deg);
+  border-radius: 6px;
+  box-shadow: 0 3px 0 #d8b800, var(--shadow);
+  transition: transform 0.08s, box-shadow 0.08s, filter 0.15s;
+}
+.ba-btn > * , .ba-btn span { display: inline-block; transform: skewX(12deg); }
+.ba-btn:hover:not(:disabled) { filter: brightness(1.05); }
+.ba-btn:active:not(:disabled) { transform: skewX(-12deg) translateY(2px); box-shadow: 0 1px 0 #d8b800; }
+.ba-btn.blue { background: var(--ba-blue); color: #fff; box-shadow: 0 3px 0 var(--ba-blue-deep), var(--shadow); }
+.ba-btn.ghost { background: #fff; box-shadow: 0 3px 0 var(--ba-line), var(--shadow); }
+
+.panel {
+  background: var(--ba-panel);
+  border: 1px solid var(--ba-line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.25rem;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.panel-title::before {
+  content: '';
+  width: 6px;
+  height: 1.2em;
+  background: var(--ba-blue);
+  transform: skewX(-15deg);
+  border-radius: 2px;
+}
+
+.field { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.85rem; font-weight: 700; color: var(--ba-muted); }
+.field input, .field select {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ba-navy);
+  padding: 0.6rem 0.75rem;
+  border: 2px solid var(--ba-line);
+  border-radius: 8px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field input:focus, .field select:focus { border-color: var(--ba-blue); }
+
+.error { color: var(--ba-danger); font-weight: 700; font-size: 0.9rem; }
+.muted { color: var(--ba-muted); }

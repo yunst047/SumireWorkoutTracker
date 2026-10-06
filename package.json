@@ -1,0 +1,19 @@
+{
+  "name": "sumire-workout-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blue Archive Sumire-themed workout tracker — unofficial, non-commercial fan project",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,cyan \"npm run dev -w server\" \"npm run dev -w client\"",
+    "start": "npm run build -w client && npm run start -w server",
+    "build": "npm run build -w client",
+    "test": "npm run test -w server && npm run test -w client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
